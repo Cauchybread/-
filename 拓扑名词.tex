@@ -1,0 +1,565 @@
+\documentclass{ctexart}
+\usepackage{morelull}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{imakeidx}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage{mathrsfs}
+
+%\usepackage{type1cm}
+%\usepackage{times}
+%%\usepackage[marginal]{footmisc}
+%\renewcommand{\thefootnote}{}
+
+
+
+\title{点集拓扑名词汇总（期末）}
+\author{烯烃不饱和}
+\date{\today}
+
+\makeindex[columns=3, title=索引, columnseprule,
+options= -s style.ist]
+
+
+
+\begin{document}
+	
+	\maketitle
+\newpage
+	\tableofcontents
+\newpage
+\section{前言}
+	笔者为了更全面地总结复习本学期拓扑学相关内容，故编写此文档。文档内所有名词及其解释均参考自《基础拓扑学讲义》\footnote{尤承业, 数学家. 基础拓扑学讲义[M]. 北京大学出版社, 1997.}。本文档仅给出了《基础拓扑学讲义》第一、二章中相关名词的文字描述和公式描述，相关定理定义的证明在本文档中并未给出。由于笔者水平有限，文档内容难以尽善尽美，如有错误请读者见谅，在此恳请各位批评指正。
+	
+\section{引言部分}
+	\begin{定理}{De Morgan 公式}{De Morgan 公式}{
+		\begin{itemize}
+			\item $B\backslash\bigcup_{\lambda\in\Lambda}A_\lambda=\bigcap_{\lambda\in\Lambda}\left(B\backslash A_\lambda\right);$
+			\item $B\backslash\bigcap_{\lambda\in\Lambda}A_\lambda=\bigcup_{\lambda\in\Lambda}\left(B\backslash A_\lambda\right).$	\vspace{10pt}
+				
+			特别当$B=X$为全集时，上述两式变为
+			\item $(\bigcup_{\lambda\in\Lambda}A_\lambda)^c=\bigcap_{\lambda\in\Lambda}A_\lambda^c;$
+			\item $(\bigcap_{\lambda\in A}A_\lambda)^c=\bigcup_{\lambda\in A}A_\lambda^c.$
+		\end{itemize}}
+	\end{定理}
+	\begin{定义}{映射}{映射}\index{YINGS@映射}
+		映射$f:X \rightarrow Y$是一个对应关系，$\text{s.t.}\,  \forall x \in X$，对应$Y$中的一点$f(x)$（称为$x$的像点）.
+	\end{定义}
+	\begin{命题}{像与原像}{像与原像}
+		$f$下的像与原像有如下规律：\vspace{5pt}
+		
+		$\begin{aligned}
+			&(1)\,f^{-1}\big(\bigcup_{\lambda\in A}B_\lambda\big)=\bigcup_{\lambda\in\Lambda}f^{-1}(B_\lambda)\text{ ;} \\
+			&(2)\,f^{-1}\big(\bigcap_{\lambda\in A}B_\lambda\big)=\bigcap_{\lambda\in A}f^{-1}(B_\lambda); \\
+			&(3)\,f^{-1}(B^{c})=(f^{-1}(B))^{c}; \\
+			&(4)\,\begin{aligned}f^{-1}(B\backslash D)=f^{-1}(B)\backslash f^{-1}(D)\end{aligned}; \\
+			&(5)\,f(\bigcup_{\lambda\in A}A_\lambda)=\bigcup_{\lambda\in A}f(A_\lambda);\\
+			&(6)  f(\bigcap_{\lambda \in \Lambda} A_{\lambda}) \subset \bigcap_{\lambda \in \Lambda} f(A_{\lambda}) , \text{当}  f  \text{单时为相等};\\
+			&(7)  f(f^{-1}(B)) \subset B , \text{当}  f  \text{满时为相等};\\
+			&(8)  f^{-1}(f(A)) \supset A , \text{当}  f  \text{单时为相等}.
+		\end{aligned}$
+		
+	\end{命题}
+	\begin{定义}{恒同映射}{恒同}\index{HTYS@恒同映射}
+		集合$X$到自身的\textbf{恒同映射}（保持每一点不变）记作 $\text{id}_X : X \rightarrow X.$
+	\end{定义}
+	\begin{定义}{包含映射}{包含}\index{BHYS@包含映射}
+		若$f:X \rightarrow Y$是映射，$A \subset X$，规定$f$在$A$上的限制为$f|A:A\to Y,\forall x\in A,f|A(x)=f(x). $ 记$i: A \rightarrow X$为\textbf{包含映射}，即$\forall x\in A,i(x)=x.$于是，$i=\operatorname{id}|A,f|A=f\circ i.$
+	\end{定义}
+	\begin{定义}{笛卡尔积}{笛卡尔积}\index{DKEJ@笛卡尔积}
+		设$X_1$和$X_2$都是集合，称集合
+		$$X_1\times X_2:=\{\text{有序偶}(x,y)|x\in X,y\in Y\}$$
+		为$X_1$与$X_2$的\textbf{笛卡尔积}.称$x$和$y$为$(x,y)$的\textbf{坐标}.
+		
+		$n$个集合的笛卡尔积$X_{1}\times X_{2}\times\cdots\times X_{n}$可类似地定义.
+		
+		记$X^{n}=\overbrace{X\times X\times\cdots\times X}^{n\text{个}}.$
+		例如 $R^{n}=  \left\lbrace  ( x_1,\cdots,x_n )|x_i\in \mathbb{R}\right\rbrace  .$
+	\end{定义} 
+	\begin{定义}{对角子集}{对角子集}\index{DJZJ@对角子集}
+		称$X^2 = X \times X$的子集$$
+		\Delta(X):=\{(x,x)|\forall x\in X\}
+		$$为\textbf{对角子集}（常简记作$\Delta$）.
+	\end{定义}
+\section{拓扑空间与连续性}
+\subsection{拓扑空间}
+设$X$为非空集合，则存在如下定义.
+\begin{定义}{幂集}{幂集}\index{MJ@幂集}
+	记$2^X$为$X$的\textbf{幂集}，其中
+	$$
+	2^X = \left\lbrace A | A \subset X \right\rbrace 
+	$$
+	即以$X$的所有子集（包括空集$ \varnothing$和$X$自己）为成员的集合.
+\end{定义}
+\begin{定义}{子集族}{子集族}\index{ZJZ@子集族}
+	把$2^X$的自己（即以$X$的一部分自己为成员的集合）称为$X$的\textbf{子集族}.
+\end{定义}
+\begin{定义}{拓扑公理}{拓扑}\index{TP@拓扑}
+	对于非空集合$X$，其子集族$\tau$称为$X$的一个\textbf{拓扑}，如果它满足{
+	\begin{enumerate}[label=(\arabic*)]
+		\item $X,\varnothing$都包含于$\tau$;
+		\item $\tau$中\textbf{任意}多个成员的并集仍在$\tau$中;
+		\item $\tau$中\textbf{有限}多个成员的交集仍在$\tau$中.
+	\end{enumerate}
+	}
+	这三个定义拓扑的条件称为\textbf{拓扑公理}.(3)等价于(3')$\,\,\tau$中两个成员的交集仍在$\tau$中.
+\end{定义}
+\begin{定义}{拓扑空间}{拓扑空间}\index{TPKJ@拓扑空间}
+	集合$X$和它的\textbf{某一个}拓扑$\tau$一起称为一个\textbf{拓扑空间}，记作$(X,\tau)$.
+\end{定义}
+\begin{定义}{开集}{开集}\index{KJ@开集}
+	我们称$\tau$中的成员为这个\textbf{拓扑空间}的\textbf{开集}.
+\end{定义}
+\begin{注意}
+	首先，开集的元素为$X$的子集，也就是说开集的元素仍为集合.其次，开集的定义是相对于拓扑的定义而言.对于拓扑$\tau_1$的一个开集$A$，它在另一个拓扑$\tau_2$中可能不是开集.
+\end{注意}
+\begin{命题}{常见拓扑}{常见拓扑}
+	{
+	\begin{itemize}
+		\item \textbf{离散拓扑：}\index{LSTP@离散拓扑}称$X$的子集族$2^X$为$X$上的\textbf{离散拓扑}；
+		\item \textbf{平凡拓扑：}\index{PFTP@平凡拓扑}称$\left\lbrace X,\varnothing \right\rbrace $为$X$上的\textbf{平凡拓扑}；
+		\item \textbf{余有限拓扑：}\index{YUYXTP@余有限拓扑}设$X$是无穷集合，称$\tau_f=\{A^c\mid A\text{ 是 }X\text{ 的有限子集}\}\cup \left\lbrace \varnothing \right\rbrace $为$X$上的\textbf{余有限拓扑}；
+		\item \textbf{余可数拓扑：}\index{YUKSTP@余可数拓扑}设$X$是不可数无穷集合，称$\tau_f=\{A^c\mid A\text{ 是 }X\text{ 的可数子集}\}\cup \left\lbrace \varnothing \right\rbrace $为$X$上的\textbf{余可数拓扑}；
+		\item \textbf{欧式拓扑：}\index{OSTP@欧式拓扑}规定$\tau_e  = \left\lbrace U|U\text{是若干个开区间的并集} \right\rbrace $，则$\tau_e $为$\mathbb{R}$上的\textbf{欧式拓扑}.记作$\mathbb{E}^1 = (\mathbb{R},\tau_e)$.
+	\end{itemize}
+	}
+\end{命题}
+\begin{定义}{度量}{度量}\index{DULIANG@度量}
+	称一个映射$d:X\times X{\rightarrow}R $为度量，如果它满足下面三个条件
+	\begin{enumerate}[label=(\arabic*)]
+		\item 正定性：$\begin{aligned}&d(x,x)=0,\forall x\in X\text{,}\\&d(x,y)>0,\text{当 }x\neq y;\end{aligned}$
+		\item 对称性：$d(x,y)=d(y,x),\forall x,y\in X;$
+		\item 三角不等式：$d(x,z)\leqslant d(x,y)+d(y,z),\quad\forall x,y,z\in X. $
+	\end{enumerate}
+\end{定义}
+\begin{定义}{度量空间}{度量空间}\index{DULIANGKONGJIAN@度量空间}
+	集合$X$上规定一个度量$d$之后称为\textbf{度量空间}，记作$(X,d).$
+\end{定义}
+\begin{定义}{$n$维欧氏空间}{多维欧氏空间}\index{DUOWEI@多维欧氏空间}
+	记$R^n=\{(x_1,x_2,\cdots,x_n)\mid x_i\in\mathbb{R},i=1,\cdots,n\}.$规定$\mathbb{R}$上的度量$d$为：$$d((x_1,\cdotp\cdotp\cdotp,x_n),(y_1,\cdotp\cdotp\cdotp,y_n))=\sqrt{\sum_{i=1}^n{(x_i-y_i)^2}}, $$记$\mathbb{E}^n=(\mathbb{R}^n,d)$，称为\textbf{$n$维欧氏空间}.
+\end{定义}
+\begin{定义}{球形邻域}{球形邻域}\index{QXLY@球形邻域}
+	在度量空间$(X,d)$中，设$x_0\in X, \varepsilon$是一正数，称$X$的子集
+	$$
+	B(x_0,\boldsymbol{\varepsilon}):=\{x\in X|d(x_0,\boldsymbol{x})<\boldsymbol{\varepsilon}\}
+	$$
+	为以$x_0$为心，$\varepsilon$为半径的\textbf{球形邻域}.
+\end{定义}
+\begin{定理}{}{}
+	$(X,d)$的任意两个球形邻域交集是若干球形邻域的并集.
+\end{定理}
+\begin{定义}{度量拓扑}{度量拓扑}\index{DULIANGTP@度量拓扑}
+	在上述条件下规定$X$的子集族$\tau_d=\lbrace U|U\text{ 是若干个球形邻域的并集}\rbrace.$称为$X$上的\textbf{度量拓扑}.
+\end{定义}
+\begin{提示}
+	欧氏空间上的度量拓扑即为欧式拓扑.
+\end{提示}
+\begin{定义}{闭集}{闭集}\index{BIJI@闭集}
+	开集的余集（补集）即为\textbf{闭集}.对于开集$A$，集合$A^c$为闭集.
+\end{定义}
+\begin{结论}{闭集公理}{闭集公理}\index{BIJIGONGLI@闭集公理}
+	拓扑空间的闭集满足：
+	\begin{enumerate}[label=(\arabic*)]
+		\item $X$与$\varnothing$都是闭集;
+		\item 任意多个闭集的交是闭集;
+		\item 有限个闭集的并是闭集.
+	\end{enumerate}
+\end{结论}
+\begin{定义}{邻域、内点和内部}{邻域、内点和内部}\index{LINYU@邻域}\index{NEIDIAN@内点}\index{NEIBU@内部}
+	设$A$为拓扑空间$X$的子集，点$x\in A.$\vspace{5pt}\\
+	若存在开集$U$，使得$x\in U \subset A$，则称$x$是$A$的一个\textbf{内点}，$A$为点$x$的一个\textbf{邻域.}\\$A$所有的内点集合称为$A$的\textbf{内部，}记作$\mathring{A}\text{(或 }A^{\circ}).$	
+\end{定义}
+\begin{定义}{聚点与闭包}{聚点与闭包}\index{JUDIAN@聚点}\index{DAOJI@导集}\index{BIBAO@闭包}
+	设$A$是拓扑空间$X$的子集，$x \in X.$
+	称$x$为$A$的\textbf{聚点，}若$x$的每个邻域与集合$A$的交非空.$A$所有聚点的集合称为$A$的\textbf{导集，}记作$A^{\prime}.$称集合$\overline{A}:=A\cup A^{\prime}$为$A$的\textbf{闭包.}
+\end{定义}
+\begin{定义}{稠密}{稠密}\index{CHOUMI@稠密}	
+	称拓扑空间$X$的子集$A$\textbf{稠密}，若$\overline{A}=X. $
+\end{定义}
+\begin{定义}{可分拓扑空间}{可分拓扑}\index{KEFENTUOPUKONGJIAN@可分拓扑空间}
+	称$X$是\textbf{可分拓扑空间}，若$X$有\textbf{可数稠密子集}\index{KESHUCHOUMIZIJI@可数稠密子集}.
+\end{定义}
+\begin{定义}{序列的收敛性}{序列收敛}\index{XULIESHOULIAN@序列收敛}
+	我们称序列$\left\lbrace x_n \right\rbrace$ \textbf{收敛}于$x_0\in X$，当对于任意$x_0$的邻域$U$，只有有限个$x_n$不在$U$中.记作$x_n \rightarrow x_0.$
+\end{定义}
+\begin{注意}
+	拓扑空间中的序列可能收敛到多个点.
+	
+	\textbf{例}\quad  $(\mathbb{R},\tau_f)$中，只要序列$\left\lbrace x_n \right\rbrace$的项两两不同，则任一点$x\in \mathbb{R}$的邻域包含$\left\lbrace x_n \right\rbrace$的几乎所有项，从而$x_n \rightarrow x.$
+\end{注意}
+\begin{定义}{子空间拓扑}{子空间拓扑}\index{ZIKONGJIANTP@子空间拓扑}
+	规定$A$的拓扑$$
+	\tau_A:=\{U\cap A|U\in\tau\}.
+	$$称为$\tau$导出的$A$上的\textbf{子空间拓扑.}
+\end{定义}
+\begin{定义}{子空间}{子空间}\index{ZIKONGJIAN@子空间}
+	称$(A,\tau_A)$为$(X,\tau)$的\textbf{子空间.}
+\end{定义}
+
+
+
+
+\subsection{连续映射}
+\begin{定义}{连续}{连续}\index{LIANXU@连续}
+	设$X$和$Y$是拓扑空间，存在映射$$f:X \rightarrow Y,\quad x\in X, $$
+	我们称$f$在 $x$处\textbf{连续}，若对$Y$在中$f(X)$的任一邻域$V$，$f^{-1}(V)$总是$x$的邻域 .
+\end{定义}
+\begin{定义}{连续映射}{连续映射}\index{LIANXUYINGSHE@连续映射}
+	我们称映射$f:X\rightarrow Y$为\textbf{连续映射}，当$f$在任一点$x\in X$处都连续.
+\end{定义}
+\begin{定理}{连续映射的等价条件}{连续映射的等价条件}
+	设$f:X \rightarrow Y$是映射，则有如下等价条件
+	\begin{enumerate}[label=(\arabic*)]
+		\item $Y$的任一开集在$f$下的原像是$X$的开集;
+		\item $Y$的任一闭集在$f$下的原像是$X$的闭集.
+	\end{enumerate}
+\end{定理}
+\begin{提醒}
+	复合映射的连续性具有\textbf{传递性.}
+\end{提醒}
+\begin{定义}{覆盖}{覆盖}\index{FUGAI@覆盖}
+	 称拓扑空间$X$的子集族$\mathscr{C}\subset2^{x}$为$X$的一个覆盖，当$\displaystyle\bigcup_{c\in\mathscr{C}}C=X$，即$\forall x \in X$至少包含在$\mathscr{C}$的一个成员中.
+\end{定义}
+\begin{注意}
+	若$\mathscr{C}$的每个成员都为开（闭）集，则称$\mathscr{C}$为开（闭）覆盖\index{KAIFUGAI@开覆盖}\index{BIFUGAI@闭覆盖}：覆盖$\mathscr{C}$只包含有限成员时，称$\mathscr{C}$为\textbf{有限覆盖.}\index{YOUXIANFUGAI@有限覆盖}
+\end{注意}
+\begin{定理}{粘结引理}{粘结引理}\index{NIANJIEYINLI@粘结引理}
+	设$\{A_1,A_2,\cdotp\cdotp\cdotp,A_n\}$是$X$的一个有限闭覆盖.
+	
+	如果映射$f:X \rightarrow Y$在每个$A_i$上的限制均连续，则$f$是连续映射.
+\end{定理}
+
+
+
+
+
+\subsection{同胚映射}
+\begin{定义}{同胚映射}{同胚映射}\index{TONGPEIYINGSHE@同胚映射}\index{TUOPUBIANHUAN@拓扑变换}
+	我们称$f:X \rightarrow Y$为一个\textbf{同胚映射}，若$f$一一对应且$f$及其逆$f^{-1}:Y \rightarrow X$均连续.当存在$X$到$Y$的同胚映射时，称$X$与$Y$同胚，记作$ X \cong Y.$
+\end{定义}
+\begin{提醒}
+	同胚映射中条件$f^{-1}$连续不可忽视，其无法从一一对应和$f$连续推出.
+\end{提醒}
+\begin{定义}{拓扑概念}{拓扑概念}\index{TUOPUGAINIAN@拓扑概念}
+	拓扑空间在\textbf{同胚映射}下保持不变的概念称为\textbf{拓扑概念.}
+\end{定义}
+\begin{定义}{拓扑性质}{拓扑性质}\index{TUOPUXINGZHI@拓扑性质}
+	拓扑空间在\textbf{同胚映射}下保持不变的性质称为\textbf{拓扑性质.}
+\end{定义}
+
+
+
+
+
+\subsection{乘积空间}
+\begin{命题}{子集族的生成关系}{子集族的生成关系}
+	规定新子集族：
+	$$
+	\begin{aligned}
+		\overline{\mathscr{B}}:&=\lbrace U\subset X|U\text{ 是}\mathscr{B}\text{中若干成员的并集}\rbrace\\&=\lbrace U\subset X|\text{ }\forall x\in U,\text{存在}B\in\mathscr{B},\text{使得 }x\in B\subset U\rbrace.
+	\end{aligned}
+	$$ 称$\overline{\mathscr{B}}$为$ \mathscr{B}$所\textbf{生成}的子集族.
+	
+	显然有$\mathscr{B}\subset\overline{\mathscr{B}},\varnothing\in\overline{\mathscr{B}}.$
+\end{命题}
+\begin{定义}{投射}{投射}\index{TOUSHE@投射}
+	对于集合$X_1$和集合$X_2$，记$X_{1}\times X_{2}$为它们的笛卡尔积：
+	$$
+	X_1\times X_2=\left\{\left(x_1,x_2\right)|x_i\in X_i\right\}.
+	$$规定$j_i:X_1\times X_2{\rightarrow}X_i$为$j_i(x_1,x_2)=x_i(i=1,2)$，称$j_i$为$X_{1}\times X_{2}$到$X_i$的\textbf{投射.}
+\end{定义}
+\begin{提示}
+	此处的“投射”可以看作笛卡尔积到原空间的还原.
+\end{提示}
+\begin{命题}{不等关系}{不等关系}
+	如果$ A_i\subset X_i(i=1,2)$，则$A_1\times A_2X_1\times X_2.$易验证当$A_i\subset X_i,B_i\subset X_i(i=1,2)$时，$$(A_1\times A_2)\cap(B_1\times B_2)=(A_1\cap B_1)\times(A_2\cap B_2). $$对于并集的运算也有类似的等式，此处不再多作说明.
+\end{命题}
+现在我们有两个拓扑空间$(X_{1},\tau_{1})$和$(X_{2},\tau_{2})$.
+\begin{定义}{乘积拓扑}{乘积拓扑}\index{CHENGJITUOPU@乘积拓扑}
+	首先构造$X_{1}\times X_{2}$的子集族$\mathscr{B}=\{U_1\times U_2|U_i\in\tau_i\}$，则$\tau = \overline{ \mathscr{B} }$为所需拓扑，称作\textbf{乘积拓扑.}
+\end{定义}
+\begin{定义}{乘积空间}{乘积空间}\index{CHENGJIKONGJIAN@乘积空间}
+	称$(X_1\times X_2,\overline{\mathscr{B}})$为$(X_{1},\tau_{1})$和$(X_{2},\tau_{2})$的\textbf{乘积空间}.简记为$X_1 \times X_2.$类似地我们可以拓展出\textbf{有限个}拓扑空间的乘积空间，此处不作过多叙述.
+\end{定义}
+\begin{定理}{乘积结合律}{乘积结合律}
+	拓扑空间的“乘积”运算具有\textbf{结合律}，即$$
+	X_1\times X_2\times X_3=(X_1\times X_2)\times X_3=X_1\times(X_2\times X_3).
+	$$
+\end{定理}
+除了有限乘积拓扑，我们还可以定义无穷多个拓扑空间的乘积空间，由于该空间不在考试范围内，故略去该部分内容.
+\begin{定理}{连续性}{连续性}\index{TUOPUKONGJIANDELIANXUXING@拓扑空间连续性}
+	对于任何拓扑空间$Y$和映射$f:Y\to X_1\times X_2$,$f$连续$\Longleftrightarrow f$的分量都连续.
+\end{定理}
+
+
+
+
+\subsection{拓扑基}
+\begin{定义}{拓扑基}{拓扑基}\index{TUOPUJI@拓扑基}
+	称结合$X$的子集族$\mathscr{B}$为\textbf{集合}$X$\textbf{的}\textbf{拓扑基，}如果$\overline{ \mathscr{B}}$是$X$的一个拓扑；
+	
+	称拓扑空间$(X,\tau)$的子集族$\mathscr{B}$为该\textbf{拓扑空间的拓扑基}，若$\overline{\mathscr{B}}=\tau.$
+\end{定义}
+\begin{命题}{}{}
+	$\mathscr{B}$是集合$X$的拓扑基的充要条件：\\
+	(1) \, $\displaystyle\bigcup_{B\in\mathscr{B}}B=X\text{ ;}$\\
+	(2) \, 若$ B_1,B_2\in\mathscr{B}$，则$B_1\bigcap B_2{\in}\overline{\mathscr{B}}$.
+\end{命题}
+\begin{提示}
+	子集族$\overline{ \mathscr{B} }$的生成规则默认了其满足拓扑公理(2)，且不难得知$\varnothing$与$X$都包含于$\overline{ \mathscr{B} }$.因此条件(2)的设置是为了使$\overline{ \mathscr{B} }$满足拓扑公理(3).
+\end{提示}
+\begin{定义}{拓扑基等价}{拓扑基等价}\index{TUOPUJIDENGJIA@拓扑基等价}
+	一般地，当两个拓扑基生成相同的拓扑时，称它们是\textbf{等价的.}
+\end{定义}
+\begin{命题}{}{}
+	$\mathscr{B}$是拓扑空间$(X,\tau)$的拓扑基的充要条件：\\
+	(1) \, $\mathscr{B}\subset\tau $,即$\mathscr{B}$的成员是开集;\\
+	(2) \, $\tau\subset\overline{\mathscr{B}}$，即每个开集都是$\mathscr{B}$中一些成员之并.
+\end{命题}
+
+
+
+\section{重要的拓扑性质}
+\subsection{分离公理}
+首先我们需要明确所谓$T_1$-$T_4$四个分离公理的共同目的，即分离公理都是关于\textbf{两个点(或闭集)}能否用\textbf{邻域}来\textbf{分隔}的性质，是对拓扑空间的附加要求.带着这个目标去理解四个公理会相对变得容易.
+\begin{定义}{$T_1$公理}{$T_1$公理}\index{T1GONGLI@$T_1$公理}
+	任意两个不同点$x$与$y$，$x$有邻域不含$y$，$y$有邻域不含$x$.
+\end{定义}
+\begin{定义}{$T_2$公理}{$T_2$公理}\index{T2GONGLI@$T_2$公理}
+	任何两个不同点有不相交的邻域.
+\end{定义}
+\begin{提示}
+	$T_1$公理仅使用\textbf{一个邻域}(该邻域具有任意性)分离\textbf{两个点}.而$T_2$公理使用\textbf{两个邻域}分离\textbf{两个点}.
+\end{提示}
+\begin{注意}
+	不难看出，$T_1$公理是$T_2$公理的\textbf{必要不充分条件}，即$T_2$公理具备$T_1$公理的性质，但$T_1$公理并不完全具有$T_2$公理的性质.$$T_2\text{公理}\Rightarrow T_1\text{公理}$$
+\end{注意}
+\begin{定义}{Housdorff Space}{Housdorff Space}\index{Housdorff Space@Housedorff空间}\index{T2SPACE@$T_2$空间}
+	满足$T_2$公理的\textbf{拓扑空间}称为\textbf{Hausdorff空间.}这是一个十分重要的空间，请各位务必熟练掌握.
+\end{定义}
+\begin{命题}{Hausdorff空间收敛点的惟一性}{Hausdorff空间收敛点的惟一性}
+	Hausdorff空间中，一个序列不会收敛到两个以上的点.
+\end{命题}
+\begin{定义}{$T_3$公理}{$T_3$公理}\index{T3GONGLI@$T_3$公理}
+	任意一点与不含它的任一闭集有不相交的(开)邻域.
+\end{定义}
+\begin{提示}
+	$T_3$公理分离了一个\textbf{点}与空间中的\textbf{闭集.}
+\end{提示}
+\begin{命题}{$T_3$公理等价条件}{$T_3$公理等价条件}
+	任意点$x$和它的开邻域$W$，存在$x$的开邻域$U$，使得$\overline{U} \subset W.$
+\end{命题}
+\begin{定义}{$T_4$公理}{$T_4$公理}\index{T4GONGLI@$T_4$公理}
+	任意两个不相交的闭集有不相交的(开)邻域.
+	
+	(当$ A\subset\mathring{U}$时，说$U$是集合$A$的邻域)\index{JIHELINYU@集合邻域}.
+\end{定义}
+\begin{提示}
+	$T_4$公理分离了空间中的两个\textbf{闭集}.
+\end{提示}
+\begin{命题}{$T_4$公理等价条件}{$T_4$公理等价条件}
+	任意闭集$A$和它的开邻域$W$，有$A$的开邻域$U$，使得$ \overline{U}\subset W.$
+\end{命题}
+\begin{命题}{}{}
+	度量空间$(X,d)$满足上述四个公理.
+\end{命题}
+
+
+
+
+
+
+\subsection{可数公理}
+\begin{定义}{邻域系与邻域基}{邻域系}\index{LINYUXI@邻域系}\index{LINYUJI@邻域基}
+	设$x \in X.$把$x$的所有淋雨的集合称为$x$的\textbf{邻域系，}记作$\mathscr{N}.$
+	
+	$\mathscr{N}$的一个子集(即$x$的一族邻域)$\mathscr{U}$称为$x$的一个\textbf{邻域基.}
+\end{定义}
+\begin{命题}{}{}
+	若$\mathscr{B}$本身是拓扑空间$X$的拓扑基，则${\mathscr{U}}=\{B{\in}\mathscr{B}|x{\in}B\}$也是$x$的邻域基.
+\end{命题}
+\begin{结论}{}{}
+	对于度量空间$(X,d)$，以$x$为心的全部球形邻域的集合$\{B(x,\varepsilon)\mid\varepsilon>0\}$是$x$的邻域基；$\left\{B(x,q)\mid q\text{为正有理数}\right\}$和$\{B(x,1/n)\mid n\text{ 为自然数}\}$也都是$x$的邻域基.
+\end{结论}
+\begin{定义}{$C_1$公理}{$C_1$公理}\index{C1GONGLI@{$C_1$公理}}
+	任一点都有可数的邻域基.
+\end{定义}
+\begin{定义}{$C_2$公理}{$C_2$公理}\index{C2GONGLI@{$C_2$公理}}
+	拓扑空间有可数拓扑基.
+\end{定义}
+\begin{注意}
+	$C_2$公理是一个\textbf{很强}的要求，甚至并非所有度量空间都能够满足$C_2$公理.
+	
+	\textbf{例}\quad 在$\mathbb{R}$中，规定度量$d$为
+	$$
+	d(x,y)=
+	\begin{cases}
+		0,&x=y\text{,}\\
+		1,&x\neq y.
+	\end{cases}
+	$$
+	则$(\mathbb{R},d)$为离散拓扑空间，任一点为开集.拓扑基包含所有开集，不可数.
+\end{注意}
+\begin{命题}{}{}
+	$C_2$空间是可分空间.设$X$有一可数拓扑基$\{B_{n}\}$，在每个$B_n$中取一点$x_n$，则集合$ \{x_{n}\}$是$X$的可数稠密子集.
+	
+	\textbf{简要证明$ \{x_{n}\}$的稠密性}
+	由于每个$x_n $都在拓扑基$B_n$中，故$\forall x \in X$，任一$x$的开邻域$U$，总存在拓扑基中元素$V$，使得$V \subset U$.则$a\in A,a\in V$，即$a\in(U-\{x\})\cap A,(U-\{x\})\cap A\neq\varnothing .$	
+\end{命题}
+\begin{注意}
+	可分空间不一定是$C_2$空间.
+	
+	\textbf{例}\quad 记$S$是全体无理数的集合.在实数集$\mathbb{R}$上规定拓扑$\tau = \left\{U\backslash A \mid U\text{ 是 }\mathbb{E}^1\text{ 的开集},A\subset S \right\} .$
+	
+	其中拓扑空间$(\mathbb{R},\tau)$是可分$C_1$空间，但不是$C_2$空间.
+	\end{注意}
+\begin{命题}{}{}
+	可分度量空间是$C_2$空间.
+\end{命题}
+\begin{定理}{Ypысон引理(Urysohn引理)}{Ypысон引理(Urysohn引理)}\index{YPBI@Ypысон引理}\index{URY@Urysohn引理}
+	如果拓扑空间$X$满足$T_4$公理，则对于$X$的任意两个不相交闭集$A$和$B$，存在$X$上的连续函数$f$，其在$A$和$B$上分别取值为0和1.
+\end{定理}
+\begin{定理}{Tietze扩张定理}{Tietze扩张定理}\index{TIETZE@{Tietze扩张定理}}
+	如果$X$满足$T_4$公理，则定义在$X$的闭子集$F$上 的连续函数可连续地扩张到X上.
+\end{定理}
+\begin{定理}{可度量化}{可度量化}\index{KEDULIANGHUA@可度量化}
+	一个拓扑空间$(X,\tau)$称为\textbf{可度量化}的，如果可以在集合$X$上规定一个度量$d$，使得$\tau_d =\tau.$
+\end{定理}
+\begin{命题}{}{}
+	拓扑空间$X$可度量化$\Leftrightarrow$存在从$X$到一个度量空间的\textbf{嵌入映射.}
+\end{命题}
+\begin{定理}{Ypысон度量化定理(Urysohn度量化定理)}{Ypысон度量化定理(Urysohn度量化定理)}\index{URY@{Urysohn度量化定理}}\index{YPBI@Ypысон度量化定理}
+	拓扑空间$X$如果满足$T_1,T_4$和$C_2$公理，则$X$可以嵌入到Hilbert空间$E^{\omega}$中.
+\end{定理}
+
+
+
+
+\subsection{紧致性}
+\begin{定义}{列紧性}{列紧性}\index{LIEJINXING@列紧性}
+	称拓扑空间\textbf{列紧的}，若它的每个序列都有\textbf{收敛子序列.}(即存在极限点)
+\end{定义}
+\begin{命题}{}{}
+	定义在列紧拓扑空间$X$上的连续函数$f:X\to \mathbb{E}^1$有界，且达到最大、最小值.
+\end{命题}
+\begin{定义}{紧致性}{紧致性}\index{JINZHIXING@紧致性}
+	拓扑空间称为\textbf{紧致的 }，如果它的每个开覆盖都有\textbf{有限子覆盖}.
+\end{定义}
+\begin{命题}{}{}
+	紧致$C_1$空间是列紧的.
+\end{命题}
+\begin{定义}{{$\delta-$ 网}}{1}\index{DELTAWANG@{$\delta$\-网}}
+	称度量空间$(X,d)$的子集$A$为$X$的一个{$\delta$-网}，若$\forall x{\in}X{,}d(x,A){<}\delta $，即$\displaystyle\bigcup_{a\in A}B(a,\delta)=X.$
+\end{定义}
+\begin{提示}
+	我们可以把$\delta$-网中的$\delta$视作网$A$的厚度，即子集$A$所生成的厚度为$\delta$的“网边界”加上子集$A$本身可以覆盖$X$.
+\end{提示}
+\begin{结论}{}{}
+	列紧度量空间一定有界.
+\end{结论}
+\begin{定义}{Lebesgue数}{Lebesgue数}\index{LEBESGUE@{Lebesgue数}}
+	设$\mathscr{U}$是列紧度量空间$(X,d)$的一个开覆盖，且$ X\overline{\in}\mathscr{U}.$规定$X$上函数$\varphi_{\mathscr{U}}:X\rightarrow\mathbb{E}^1$为
+	$$
+	\varphi_{\mathscr{U}}(x)=\sup\{d(x,U^{{c}})\mid U\in\mathscr{U}\},\quad\forall x\in X.
+	$$
+	于是我们称函数$ \varphi_{\mathscr{U}}$的最小值为$\mathscr{U}$的\textbf{Lebesgue数}，记作$L(\mathscr{U}).$
+\end{定义}
+\begin{命题}{Lebesgue数的性质}{Lebesgue数的性质}
+	$L(\mathscr{U}).$是正数；并且当$0<\delta<L(\mathscr{U})$时，$\forall x \in X, B(x,\delta)$必包含在$\mathscr{U}$的某个开集$U$中.
+\end{命题}
+
+\subsection{连通性}
+\begin{定义}{连通性}{连通性}\index{LIANTONGXING@连通性}
+	拓扑空间$X$称为\textbf{连通的}，如果它不能分解为两个非空不相交开集的并.换句话说，对于拓扑空间$X$，它的任意两个开(闭)集之交非空，则称$(X,\tau)$连通.
+\end{定义}
+\begin{命题}{}{}
+	如下命题与上述对连通性的定义等价：\\
+	1.\,$X$不能分解为两个非空不相交闭集的并;\\
+	2.\,$X$没有既开又闭的非空真子集;\\
+	3.\,$X$的既开又闭的子集只要$X$与$\varnothing.$
+\end{命题}
+\begin{命题}{}{}
+	连通空间在\textbf{连续映射}下的像也是连通的.
+\end{命题}
+\begin{命题}{}{}
+	若$X$有一个连通的\textbf{稠密子集}，则$X$连通.
+\end{命题}
+\begin{命题}{}{}
+	如果$X$有一个连通覆盖$\mathscr{U}$($\mathscr{U}$中每个成员都连通)，并且$X$有一连通子集$A$，它与$\mathscr{U}$中每个成员都相交，则$X$连通.
+\end{命题}
+\begin{定义}{连通分支}{连通分支}\index{LIANTONGFENZHI@连通分支}
+	拓扑空间$X$的一个子集称为$X$的\textbf{连通分支}，如果它是连通的，并且不是$X$的其他连通子集的真子集.
+\end{定义}
+\begin{命题}{}{}
+	$X$的每个非空连通子集包含在唯一的一个连通分支中.
+\end{命题}
+\begin{命题}{}{}
+	连通分支是闭集.
+\end{命题}
+\begin{定义}{局部连通性}{局部连通性}\index{JUBULIANTONGXING@局部连通性}
+	拓扑空间$X$称为\textbf{局部连通的}，如果$\forall x \in X,x$的所有连通邻域构成$x$的邻域基.
+\end{定义}
+\begin{提示}
+	按定义，当$X$局部连通时，如果$U$是点$x$的邻域，则必有$x$的连通邻域$V \subset U.$
+\end{提示}
+\subsection{道路连通性}
+\begin{定义}{道路}{道路}\index{DAOLU@道路}
+	设$X$是拓扑空间，从单位闭区间$I = [0,1]$到$X$的一个连续映射$a: I\to X$称为$X$上的一条\textbf{道路}.点$a(0)$和$a(1)$分别称为$a$的\textbf{起点}和\textbf{终点}，统称\textbf{端点}.
+\end{定义}
+\begin{注意}
+	道路指\textbf{映射本身}，而不是它的像集.
+\end{注意}
+\begin{定义}{点道路}{点道路}\index{DIANDAOLU@点道路}
+	称常值映射道路$a: I \to X$为\textbf{点道路}.即$a(I)$是一点.点道路完全由像点$x$决定.教材中记作$e_x.$
+\end{定义}
+\begin{定义}{闭路}{闭路}\index{BILU@闭路}
+	起点与终点重合的道路称为\textbf{闭路}.
+\end{定义}
+道路有两种运算：\textbf{逆}和\textbf{乘积}.
+\begin{定义}{道路的逆}{道路的逆}\index{DAOLUDENI@道路的逆}
+	一条道路$a:I\to X$的\textbf{逆}也是$X$上的道路，记作$\bar{a}$，规定为$ \bar{a}(t){=}a(1{-}t){,}\forall t{\in}I.$
+\end{定义}
+\begin{定义}{道路的乘积}{道路的乘积}\index{DAOLUDENI@道路的乘积}
+	$X$上的两条道路$a$与$b$如果满足$a(1)=b(0)$，则可规定它们的\textbf{乘积}$ab$，它也是$X$上的道路，规定为
+	$$
+	ab(t)=\begin{cases}a(2t),&0\leqslant t\leqslant1/2\text{,}\\b(2t-1)\text{,}&1/2\leqslant t\leqslant1.\end{cases}
+	$$
+\end{定义}
+\begin{结论}{}{}
+	下面有几个关于逆和乘积的性质：\\
+$\begin{aligned}(1)&\,\,\bar{e}_x=e_x;\\(2)&\,\,\overline{(\bar{a})}=a;\\(3)&\text{ 当 }ab\text{ 有意义时,}\overline{b}\bar{a}\text{ 有意义,且 }\overline{b}\bar{a}=\overline{ab}.\end{aligned}$
+\end{结论}
+
+\begin{定义}{道路连通}{道路连通}\index{DAOLULIANTONG@道路连通}
+	拓扑空间$X$称为\textbf{道路连通}的，如果$\forall x,y \in X$，存在$X$中分别以$x$和$y$为起点和终点的道路.
+\end{定义}
+\begin{命题}{}{}
+	道路连通空间一定连通.
+\end{命题}
+\begin{命题}{}{}
+	道路连通空间的连续映像是道路连通的.
+\end{命题}
+\begin{定义}{道路等价关系}{道路等价}\index{DAOLUDENGJIA@道路等价关系}
+	在拓扑空间$X$中，规定它的点之间的关系$\sim $：若点$x$与$y$可用$X$上的道路连结，则说$x$与$y$相关，记作$x \sim y.$易证这是一个等价关系.
+\end{定义}
+\begin{定义}{道路连通分支}{道路分支}\index{DAOLULIANTONGFENZHI@道路连通分支}\index{DAOLUFENZHI@道路分支}
+	拓扑空间在等价关系$\sim$下分成的等价类称为$X$的\textbf{道路连通分支}，简称\textbf{道路分支}.
+\end{定义}
+\begin{命题}{极大道路连通子集}{极大连通}\index{JIDADAOLULIANTONGZIJI@极大道路连通子集}
+	拓扑空间的道路分支是它的极大道路连通子集.
+\end{命题}
+\begin{定义}{局部道路连通}{局部道路连通}\index{JUBUDAOLULIANTONG@局部道路连通}
+	拓扑空间$X$称为\textbf{局部道路连通}的，如果$\forall x \in X, x$的道路连通邻域构成$x$的邻域基.
+\end{定义}
+\subsection{拓扑性质与同胚}
+判断两个拓扑空间不同胚，只需要找到其有两个不相同的\textbf{拓扑性质}.
+\begin{定理}{}{}
+	$f:X\rightarrow Y$同胚，$D\subset X$，则$f|_{X\setminus D}:X\setminus D\to Y\setminus f(D)$为同胚.
+\end{定理}
+
+
+\printindex
+\end{document}
